@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sugarcane Juice Taskboard</title>
+    <!-- Include cdn links  -->
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: #f9f9f9;
+        }
+        h1{
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        image{
+            height: fit-content;
+            max-width: fit-content;
+            bottom: auto;
+            margin: auto;
+            padding: 0%;
+
+
+        }
+        .header {
+            background-color: #2e8b57;
+            color: white;
+            padding:0%;
+            text-align: center;
+        }
+        .sidebar {
+            background-color: #e0f7fa;
+            height: 100vh;
+            padding: 20px;
+        }
+        .taskboard {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+        }
+        .column {
+            flex: 1;
+            margin: 0 10px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        .task-card {
+            background-color: #f1f8e9;
+            border: 1px solid #c8e6c9;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+        .task-card h5 {
+            margin-top: 0;
+        }
+        .footer {
+            background-color: #2e8b57;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        .add-task {
+            background-color: #2e8b57;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Sugarcane Juice Taskboard</h1>
+<img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxMTEhUTEhIVFRUVFxUVGBgVFRUVFRUXFxUXFxUYFRUYHSggGBolHRUVITEhJSkrLi4uFx8zODMtNygtLisBCgoKDg0OGhAQGy0mHyYtLy0tLS0tLS0tKy0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAMABBgMBIgACEQEDEQH/xAAcAAACAgMBAQAAAAAAAAAAAAAFBgMEAQIHAAj/xABCEAABAwIEBAQDBAgFAgcAAAABAAIRAwQFEiExBkFRYSJxkaETgbEyQsHhFCMkUmJy0fAVFoKS8QfSMzRTY6Kywv/EABoBAAMBAQEBAAAAAAAAAAAAAAIDBAEFAAb/xAApEQADAAICAgEDBAIDAAAAAAAAAQIDERIhBDFBEyJRBTJhcRSRBiPR/9oADAMBAAIRAxEAPwB9pXQLUBr0Q1xcOasMMIdit8AI2Xz1Z3llQydohu7kuMJ2wOpFNvkkCyOZ2vNM1K+LGR0Cr8epwb2HNaLWP4jBgHkl5l/VIIa6JVTFrsuJWlkIGqVkyN07/JnL5JrKw/WAuMkmSV0XDYa0JAp3EFEP8aLW7qrx4+hDyX8mzQ43F8CcoOqE4tqwg8/6oDYYkXPlxOvNYx3Eg1u5Ou6ZGb6kcmH79CvxHhBOrdD9UqFuU+IQV0+g/wCLTkhLGJYe17yI1CJ4ko2ex2+WmKNxcGdEUwe9czxK1c8OEagKr+guaNkltpaQ2l3o6BgFwazZcZ7KTHbdrWg6DqlLhvEjSfBOhRzGbn4jF0IzL6ffsn+j94B+KSTDjGseqA37w1x80YbRIGiE3eGPeZErnvI7fYx6T6BzrnXROXDt4MoMgRulP/B6jTqCmbAuH61TRjTHNx0aP6oapp/Z7PNJhi6xjxZWhX6c5ZdOuxjfy6ohh/DVCgPiV3BxGsu0YD2bzVfibHmVWNpUWHwkHNsOYIA6KrHVR3k9/gRWPfoVOInRlDd5VOgx0apktcBLxLiZ3VG9pfCcQd/qhz4+Sd5J0HjtceKZQtqrmmQSE6cP41Ja1530Sha0MxTFh9o0BQ+LFrrfQafF7Q9OAyyhNV/i+agovkRmMKzTYArM+PnOjXk2ylfM0MbqawxUlgDtxp5qviVYBaWtMQuTPPFtINta6J6r9yh7q/ihW6qo0aUvQ48XLZ70wiwrCIW1uIWE2fApr2O+ugK8w1KGMPNR8DkmLELkNYgWFMD3OeUzxZmt3Xwc1MuYPRIAJRt0QhtaoGgAbrWhcHWTsgxWnke/RpFdNAJKis3l7so2Wbozt1RHBbcNfJT8cO8oaSa2w5aYM3KJCr3mCtnRFqmItYyegSziPFLRKu8yE44s8uJeo4aBshmMUQdOiq0OKAdgVrUvC/kk5FE40kFDexowu2YaYI6JZx+n8OrmapqGIuY2Bsh99VNQyUWPzetNBVPyi3QxRjvDzWLymxw0QsWYGo3RKytiRqgvPL+DVNV6Fm6YQ/TkilK4JbC1xK2yuUdKsAsmvlmVb9Fy1pydUdw2wz/YZI6nb1VnAcFYaYrVufiAOgDerlpi/GDKfgoNBI+8dGDyHNPUStOvkFQ6CrMFotGarBjro0fLmo7vGg0ZaLRA5kQB/K0JEuMcrvOZzsx9h5BbU8RLtyiyZZx9JA9r0XsSunVHS95ce+w8grnDtAPJ6oM5pOys2l0aZ0JBXOXkVhtZNbDmFkfFvR0C2Y0NgxKU+MLcHUclp+nVDDg4lC8XvSdCTPddx+ViyYW38r0TvDU2kvj5KLLnKpaOJVCYahdSoiuAUydQJ6lcRW9lanb0ELS+qNMORClirgVY/wAIL2A7FCbu1LH5T8llXSMvHp7Lr7zORKvsuIASy9pBCMFpLJRKHUmclrRbrXw6rOHGSEtsc4v7I7aOggpUbkJ2raQf+MRsvKGhdBeW/Uzlqw4hJx+rplHNaYaz4dOSprqjmdK2tbN9d4pU4mJ1MABLSblRJx12QUqxcZPJRVLsh0Dnumy14OyiH1gPIT9VN/li1b9qtr3IVMeJkTTa0g1LFIV9idArFO+18MkrfjOwpUabXUahdmMHp8iqXDVxTYDVqsL27QDBHfuqcbU1pM1w09P2TXpr1GwJDVJhvDAf4nnXoi9Hi/DNiHN82kq9R4rw07O/+DlUte6YX0L36KllgNNvIKpidBrCYRuhxBY1HQ1rnctJCU8UqZ3kMBjNAG530SvIrG50vYX07jW0TwCFSqiHQEx2nDFYMDnlrQepkjz5D1WP8vUhq+4b6j/8hyjXjVr0HykD2tOd1dZVjQIpa4bbAaVs3+l5/AKV9tbjd5/2O/7kawNe9f7PfUS9CrevDjqFQfREjzA9Smu6tbR29Uj/AE1B9JUFvgluXAsuAYI0JcOe0Fn4pn03XXX+xFPsLcVn4Vm1o/gZ8o1+i5ViN7rC7HxJaGoxrQNiTr5R8t1zPEMJl5aRBaYPms8hJWmxqtrpAKhiHKCrBuuaLW2CAclRxyzDRokPMnXExz0XsJvQ4wUedaBwmFzywr+IJ/wPEWuABWtC109luhDREINjNOTIRy+eN0BvriT7IqpqdN9FSapfyCha5nAciV0LBcJa2mBtOqWrO12Md0bONBjYJOiXNRvYWNpexppvY0R0StxDUaXAjdL97xBUcfAco9fqvUbkvEuMlBnzbWkg2uSei3duACJ21QGn8ks3lYnworY1IYjxVqSOl2E8MsmuMwi9TDOgS/YXuQhN9ldB4TvHUXtMLfQCqW7gV5MFegF5XqEloYrWjn736IW8kZzMENMEK6w6LWrbS1x/hd/9T+S4MvvRJirVr+wEcXed3uP+o/1WG4gSd/dL3xFtRq6ro/40ne5fgO3+KOqU3NJ+yWkdljDbyaNRh5NcfZBmOl729Wz6IthtpDXu/gd9FrSikc/P3kVCvTqSrmH1SDuqNBXbIaqql9o1PsZ+FDmrgEkAnVHP0nJVaRuHg+6B8L0/1o7pkxTC4eHN6/iovJenLByvocLhgqgfEp1OxbJ28joom4DTOz3ieTp89sv4o1QccgAgaDXc7f8AKjYHQc0npPuqHlj8EqllKnhDWiBUHzhV7zAs4j40azpl/qjYc2NfcFS03sB1+i9yxv4Ccim/hVpiax9AfpKs2nD9OlEOqOOYO203B6BM77xg5E/6RHuqlaoDszdYqxT6MckNzWDS1xYHOGgJE5Z3Mx5Lnd7Xc6tUedS57j7wukAy38Fy4XIe5/8AM76pHlXvWhV9BS1cDEoXxE9paRGqs2LvFHNYxbC3P1U8KV9zGzXJaEi1oJmwCjDiSdtgoWYaWbjRa1bk0zLUbpNmVKl9jjcMDmDugtS11haYNfOfo4iOSOVbaR3U+Wm+gpW+0T4fSBYFTvLCTst8Mrw6Cj9KgH6ocEOlr5AyVp9CVeYTAkCFHhluU2Y8A1umpS7htNzXa802sLitMfhyri0/ZTu7eHSssq6QFbxSmSPCCYVG1pkO1XraT6AZJRqEOEpmwm51idCgFRo3UttdZTugxZeFgvpD2Ky8gNDEpCyu1OWWtihNuLgAK/h1eWHuCPZBbqlrCJ4VQgLh5EkLnp7Of3Ah7h3I9yo6T4KnxZsVqg/id9SqObVdvW1s6yovgxWZ309k1Wjh8Jw/gd9En16kFjuhCcBSysd3Y4+oU2X90k2V/chEtf79kSsxqhtpt6/gi2H01VfoamNvBlvNZvQapvqDMNe6BcBMBe6eQRSpiDdR3K5Xnqmp0C6W+xwsHzTZ/KFOShmDVs1Gme34q9nU0eVrpnnG+yQrJKizraUz/KRn0zYrDjosStah0QPyNnuBEXeAnz+i43bSHE9Suv3DoouP8L/oVy6jb5jCodbSQlztl7C25nZvkjRrxA3VE5abJ5BUaN4XmeS9XU6BT4vYZu6Ic3SEjYy0tcZTpbVZ0UWKYW2o1BDSPXXMWMNuwAIMJrwvEPiCDySdc4W6meoU1lelp0XsrTXQWLI5Y316RBBCM4ZdQCCUEw27+I3VW2iHaKO8rx6pfBtzt7LV6czpOwQDFsUY1wa3eYRbEGktgIJh+AF787uS6X1Va/km9MaMEsPiU5PMlDOIbYMqCBu1NOGHIwDolriWtmrCOQC3LMrGvyWa3IuGoTPYr1Kp44VoWLoJ7qlYWbnVp1gaKPU3X2s9cPQWttt15TVKBbuvIaz1D4k7TQvYqYqfNFLR3hCE4yIdKv4XXBGqKp2kA50IePH9oqQD9ooeGk/dKPYnZ1HVHkDdxO/dU6do8mCCF2VcqUdBJ+iN1oHMkvDcsb6k+SeXAOtcw/8ATPsISvSw4kRB2PIpjNSLQtnUU3A9t1PVqnOvyLzQ1pnP7Iaf32Rm0EIZhoHNGKTgYAVuT9oS9jx/09iXfJCrioA90/vH6q/wG7xQOZCCYjPxXgD7zvqVz/IltIDJ+46LwxWBt2RyLh7ozKWOCJ+AQeVQ+7QmSV8tnpxlpFcdyjeVsCopUgKyMxrRvK1rHRYBWLk6BOx3vYuiC/P7O/8Akck6ztwNU24w+LV/8v4hID8RI0Gy7Uy6a/BJRrjNbM9rJ0P9US/RGtZIjZLl7UJMztspRiL3Ny/JMJqbbLttcmYEkom1lQCSCQpuG8NGhO6Y70MYzkjjBtbNVIX/AIDXiCgGI4JBLm7Ioy7/AFhgz5Io4y2fZT1PEoxJUAeGmeIjvH5pgrMykSteH7IBzncz+CI4pTGUzyQZvF+phbMvK+TKwZmROyoABDLOuIRK2fzTvBxqMab7YhvdbJ7jwt0S26lmrPPkreMh5jK4gHuocPZkGql/U/LmZcr2XYU6/osvthCl4csAXukKN10FtgmItZVIJGqg/RcnHP8Ad8lWZzw6L2O4XoMo5/gvK9iN+3TbdYX0WXxsV262ROUzlWM05Khsn5SJTFi2HaSlsN17hTPXEzNKB+IXOWo7XnK9aYiJ1Gir4zT/AFh+X0Q86bLoLGnOylb6GatioLdBrsqTKp+A/wDkd7oJWrEN3THXsy2znm5oHr/ykLGopf2LzP0hOsyiFuTIVv8AwbKwOBBPZWbawkjwqvLmlIHTn2NXBTWhzHE6zsjVvhDPiVCQJLifdQ8IYZ946QefRVOKsaNG6qU6ZB+ydORjX6qS65yC1t9jPhVJrczW9Wn6hXylXg29c97w47tafR35pocvkf1L7c7/AJRVg/YjIK2nZRLYrnK2kOaJ2rW65LNJa3DtQup4r2v7YmwdxM+LR/yHuFzcmXLoHGj4tY6vaPc/0SBbOGcSvpJeoJNE9ay02XhhxaMw1jVEK9cZUVwio2o2OeyVLpisscfQCseIcjiJIhRYriFa4c2mwkA7nsimJYA0PzAaypqFJtOHHkjryZhqREpEmH4GKTA6ZPcqpVxhocWzEaKTFeI2BhDTqkStnc4vM6lMa5Lsql69HSsLvdhPNF7oZmkLmuDYuWkNdKf8NxBrgNZSeVR18AOdmlnb5d1Z/SY0HzU1yWwqdNo11XoypLWxNS0Zr3EboLfYjGynxAnrogdzqYXOzYVlyc99DozOVxJBiRW9avIkFR0rCQq9VuQwdlTjwTHox2/TJP8AEnnQuOndeVaqwTovI3tPQkZ24q14iVA6wa4aBKT6TgdCQVfwbGXtdlqajkVU8bLXW+mCeI2Za7m9APohLwi/FFUOuHEcwCg7l0I/YipLpENz9n5hOeI3LXWpYDrkHygBJN0dI7hFbUPLHk7Bjh7ILjbl/wAk+b2ih8RzIDakiAd0Rs7utplf7jmly2p9QiFpbZjAVGSJc9nlTOlcLCoTNWsA3mJB9IS5eOa65qkGWlxg9R/YR/hHBv1bid4OvRCLvDy10qKlKXRmS9dMPcJVQLjKObHe0J0K57wwct1T75h6hdCXyv6xH/fL/K/9H+M/sNCFs4bLDltK42vaKSSko6p8QUtJRk+MLseBP7SfIwBx8f1DB/7n0BSNTpwV0DjSyqVG0hTYXeJxO2mmm6AN4VuCJ8Gv8X5L6acda6RG6ewI6k5xRHDqVSk4GdEZsuEq4ILi0fMulMNnw0D9qXdtgmzgtrWtDOSpaoC1qpcIEk9hKA4qXxlgjzELqdrhOQaNDR239VNe4RRqsy1QD35juCk3+mcny5dkzx/hnF7DA82rtOeq2xCwyDTZMeLW5oVDTJn90j7w5R35IhZcNtfBrkxvkB+p/Bex46da/wBjYa1r5Oc2eDVKpORpjrBhW3ULi2Ia6cvbkuxWGGhsNpgtA6HRTYhg1KowtrDN3+8O4PNVV47aC1OjldC+fH2irVDESNyoMUwx1vWdTJkHVp6tJ0WtK36rg+Vi+7iS1tUX7q6BahlGlmdKsV2La38ITfHxzMB8ddsskZQgeKvnVGqlaQgV84Ewm43zrjIFUn2R0SvLz/CAvJ9YtPs8p2gk3Dqsk/CPos1MDqFv/hmV0H0WCFf9JFrWziuP0S2rlcIIABQt5TLx8P2t/wAksVCjS0tFK9EduzPVY3q4BOuIYZUpW9UlhAynXzSlgTZuqI/jC6zxu/8AYa38sfReePk1/BPkW2cWtDojWAsc58Na5xMbAnmg9FNOAucynLSWyc0jQ9kWampNids6Jw3aP+E9oEO6HQieyq3vD9c/cH+4Kjh3EThVovedQcjjP2g7TXy0TVd4y1pgnr+SmU46a5MXmxtsWMM4ZuWVWPdkAa4E+LWOcJxKW347L25XCMwEfNMdQrg/8hxxFY6kd4y0mYcsBelbsXzGnd/aVbJaaqipD9NT0WlepUdoxpA6nc+StWFpk1P2l9f+mfpuRpVk6RJltEtO1JIc/U8hyHkrAoqxSb1UV1dtaNBK+lmVK0iRs1oXGTQ7D+wrxxVjRr0B9eqS8RxGSQTodDB5d0OfjL2Uc05sudpk6ugF0GO0oaemFKY63nEIgRAB6pcxDiZoBlwneJ7pCuMde7ZyhsrR1w8DMXE6ALHWh0418j1Y3Lbp2fLPwvsz1dsPaU121MgCd0LwHDG0KbWN3G56u5lM+G0Z1PL3S8ca2z2VzvpFy1p5W67oZilYk6cvXur2IV8jSljEruGzMzz5hbltSgJlsDcQ2T7gtNJsuYS0kmPCQD9ULqcP3R2a3/cnPA5+GXH7zifl4R/VEgVL/jRX3M24VPZz+lw7cRq0f7lsMBr/ALg9fyXQGlehC/Ch/LAeJM5xc4DcnQNHqoLfhKvMloPz/JdNKyCUUeLMPcsH6MnObnhSs6PCBHf8l5dJaV5OeJU9tnlhS9AbIsOatoHVaOqNHNNSKdnJ+P8A/wA0/wCX0SnUcmfjyqHXVSDOyVnBDsp19qL3CbZvaP8AN+BXUuPhFjV8h9QuZ8Gs/baR5B34FdK/6hVR+hVB1j6o5J79nG27JrwapNJvl+CVMuiO4DX8GXmJ90Gb9oUdMuYmTkkdj6FHL+4D2SOYH01QS+qgMMmFVq3uVmm0a/kudllulr8h0T2dU52fzN+oXYSZA7rg1riAzA9HA+67Hf422lQbUOpcIaJ3MfRRfqvj1kmZ12el9l2+uhSpue7lt3PJJ9S4q1CXOedeQJAHlChGMPrmHOnUGBo0RtAVrLG++yq/Sv0+fGx7pfc/kXmp70EcHx2pRdFR2enznUgdQU+vLCwVGGQdR3XMgzl8vXVFsCxUsa6m4wBqO07rsTWhHHkHLnFInkgmJ4tAJn80u4xjbQ92vkUr4vjpd4Qd9PNG2F9Pj7COKYwXkhpmeXIeaHXmIZaOVz8pe53mZAbt0ifVbYJgVasM5OSn+9zPZo691V4pw4Gs1tJoAADQSdXHaT38krnLekwnL9mmG4PUrQWvDWHZzjA8gF1PgzhcWzS5zs9R0QSIyt30HdB+DOHGWzQ+4fyBDOWYbGOoTza4zbkxMHuICH6sb1sLg9bC+H0NYjZF6tTK2VFZsAbmmZE6bIdiV16JjekI1tlS+u5mdIQr9HNTTkf7lSXLwZc4w0CSTpGqsUaegynTtzUdffX9FOuKCFNgAAGwELcNHVDyDzKsMaOqcmKaLGnVYnusNAXssojDZp7rf4kquWd1o4IdmpF1rl5U2P7yvL3I9oBVLnqVUrXGmhBULyD/AGFC+kSIAA9lVvRhz7iugDWc4aE9EFo2BcY1T1i2H+LM4j6oexjRs31U9PsevRY4atm0iC0a9UzcRUfi0HNMahLtoTPJMFVs0zJ5J0etCr9nNauFUmnx1vk0SVubi2psikKmadS46R5BXcWw05yQJVEYa7p7Ka33pjF/AOxPEg6Gj5qA1y4RH1RxmCz932VulgZ/d9kDuV8HuLYr0LZoMw4+wTdjF+57Kbf3Glu8icztR8oWDgjh93RWeLLam2uRS5AZxEeLmR2Mr2+bTa9GyuNFPh6tFTXYggpqaNIn++iTqVUU2F/p3Kt4XxGD4Ku/70afkU6WLtb7Gjv6/JCcdvfhUy4Hcgfip6uIN1dnbEdQEsX+NU61VrGsL2tdqRz8hzTEtgS9Vs0wzCri9fIBDZ1cRp8vVO2HcBgAeH5nf8kw8KXAdQDcsOZ4SIAkfddA6j6IlVc92kwOiW+VfwG60Kd0wUP1I+yzbvzSs0Z7kcydyfujchvpum7imyLW/EGoGh580oNqAVGkeZ+YUGqxVpjKfLQyPqkmSt2N0kKhRradJROm8QNjzVKlGNsNYFjbqZFNzj8M6Qfunsi9w/XfdJLzzVjiziP4Nowg/rHjKO5mJS3VK1K+RkytcmDeIOJg+4Fsx36thzPggZ3DZondOvD72loDZgxzMeeq4NaPLahLhLpknfnquhcK485mVhPhECenSVUolE9U69HTq9rl3A15qOnuhP8Am9sZfhucOug9Oyu2GJU6okGCNw6JCW6h1pM3jSnbRfapA5VhXb1HyK3bWB2KYAWCQsZh0UK9qvHiX4gGzV5atC8tPbA7rcDkFWrU0RLOy0NJe/sIWbuzk6/RRMsG9PZM7qDVrlaOSF32EgNb2AOzfZEW4dI1CsG5A2UDq5PNEmzGVbjDGDc+irGwp8mz5q85sqItH/JK1wn7PKmiCnhzf3VZp2rey2aQpRU+S9xR7kyP4LRuJ+SXMawqi5xf8SHnQgmCekjnyTJUrb/0KWcVeA6SfZSeXylJwMxLl7EnGPBDfM+mgVSxoe6KcUFrgHtO0h3pofZD7KpsQnYb5Y9nqX3aK+I2xOiP8J4QGjONTzHQdlFVpB2qL4E8sIPLYpqba0DpS9j1hIAALTyj5aaImc4Bkt7RMx3QOyEeJn2TyRn4xy80aQNrfaBeL31FtJzahdlcCOROvMLmzSM2ZuoTZxQM4Mkz/fdc9/SjRfrOWdZ5KbPPJ6DjpB8EtIn7JV23usug2/FUrKu0jKdQUMxW7dSdDRLT15JMN74v2MaGn9JBICDf9RsFrhlG4maQGUj9wk6E+ai4VuX1qwz6NbyHNdYNtTr0XUntBY4RCdE6vbByfs6Pn+hUgDXeZTXwrbS0vIkuMAJb4lwZ9ncOpOnLux37zeR/BO3DNVotmOB1j1Mrc/SBxd9BP4MaRJnfkFZwuvkrM6AxpzB0IUDyC2eZKkwq3zV2AA7z6LnUmVP0dAZHQeikY7sfRVXF52j3C3DT1C6myDRdkdVkEKkxnMuHpopwT2Pst2C0WGrKigc3FeXjD//Z" alt="width=155" height="150">
+
+    </div>
+
+    <div class="container center">
+        <div class="row">
+            <div class="col-md-3 sidebar">
+                <h3>Categories</h3>
+                <ul class="nav flex-column">
+                    
+                    <li class="nav-item"><a class="nav-link" href="#">To Do</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">In Progress</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Done</a></li>
+                </ul>
+            </div>
+            <div class="col-md-5 taskboard">
+                <div class="column">
+                    <h3>To Do</h3>
+                    <div class="task-card">
+                        <h5>Task 1</h5>
+                        <p>Description of Task 1</p>
+                        <p class="text-muted"></p>
+                        <div>
+                            <button class="add-task">Add task</button>
+                        </div>
+                    <div class="column">
+                    <h3>In Progress</h3>
+                    <div class="task-card">
+                        <h5>Task 2</h5>
+                        <p>Description of Task 2</p>
+                        <p class="text-muted"></p>
+                    </div>
+                    <button class="add-task">Add Task</button>
+                </div>
+                <div class="column">
+                    <h3>Done</h3>
+                    <div class="task-card">
+                        <h5>Task 3</h5>
+                        <p>Description of Task 3</p>
+                        <p class="text-muted"></p>
+                    </div>
+                    <button class="add-task">Add Task</button>
+                </div>
+                </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Sugarcane Juice Taskboard. All rights copy  reserved.</p>
+    </div>
+</body>
+</html>
